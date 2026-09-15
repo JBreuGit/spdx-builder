@@ -53,7 +53,7 @@ public class UploadClient {
 
     void upload(File file) {
         try {
-            final var reqBody = RequestBody.create(MediaType.parse("text/plain;charset=UTF-8"), file);
+            final var reqBody = RequestBody.create(file, MediaType.parse("text/plain;charset=UTF-8"));
             final var filePart = MultipartBody.Part.createFormData("file", "sbom.spdx", reqBody);
             final var response = rest.uploadFile(uploadUrl.getPath(), filePart).execute();
             if (!response.isSuccessful()) {

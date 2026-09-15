@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.philips.research.spdxbuilder.core.ConversionService;
 import pl.tlinkowski.annotation.basic.NullOr;
@@ -22,9 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TreeConfiguration {
-    private static final ObjectMapper MAPPER = new ObjectMapper(new YAMLFactory())
-            .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.NON_PRIVATE)
-            .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+    private static final ObjectMapper MAPPER = JsonMapper.builder(new YAMLFactory())
+            .visibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.NON_PRIVATE)
+            .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
+            .build();
 
     private final Configuration config;
 
