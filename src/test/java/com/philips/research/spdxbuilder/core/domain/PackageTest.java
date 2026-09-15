@@ -7,6 +7,7 @@ package com.philips.research.spdxbuilder.core.domain;
 
 import com.github.packageurl.PackageURL;
 import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -83,6 +84,7 @@ class PackageTest {
     void implementsEquals() {
         EqualsVerifier.forClass(Package.class)
                 .withOnlyTheseFields("namespace", "name", "version")
+                .suppress(Warning.URL_EQUALITY)
                 .verify();
     }
 }

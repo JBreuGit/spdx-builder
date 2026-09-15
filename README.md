@@ -72,7 +72,7 @@ Separate usage details are found per mode for: [ort mode](docs/usage_with_ort.md
 ,[blackduck mode](docs/usage_with_black_duck.md),
 and [tree mode](docs/usage_with_tree.md).
 
-_NOTE: This application requires Java 11 or higher._
+_NOTE: This application requires Java 21 or higher._
 
 ### Uploading the resulting SPDX file
 
